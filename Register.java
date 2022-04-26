@@ -1,15 +1,16 @@
+package com.automation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class Register {
-
-	public static void main(String[] args) {
-		System.setProperty("webdriver.chrome.driver", "E:\\browserdrivers\\chromedriver.exe");
-		WebDriver driver=new ChromeDriver();
+public class Register extends WebDriverInitializer {
+	
+	
+	public void test () {
 		
-		driver.manage().window().maximize();
+		
+		WebDriver driver= initDriver();
 		driver.get("https://parabank.parasoft.com/parabank/index.htm");
 		
 		Actions action=new Actions(driver);
@@ -28,6 +29,10 @@ public class Register {
 		driver.findElement(By.id("customer.password")).sendKeys("Welcome"); 	
 		driver.findElement(By.id("repeatedPassword")).sendKeys("Welcome"); 	
 		driver.findElement(By.xpath("//*[@id=\"customerForm\"]/table/tbody/tr[13]/td[2]/input")).click();
+	}
+
+	public static void main(String[] args) {
+		new Register().test();
 	}
 
 }
